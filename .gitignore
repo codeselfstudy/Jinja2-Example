@@ -1,0 +1,18 @@
+# Editors
+*~
+*.sw[op]
+.idea/
+*sublime-workspace*
+*sublime-project*
+
+baseball_bmi.txt
+outfile.html
+
+# Python
+*.py[oc]
+
+# Logs
+logs
+*.log
+
+node_modules/
