@@ -2,10 +2,10 @@
 
 This is a quick example of using Jinja2 (without Flask).
 
-# The raw data is in a tab-delimited file in the `./data` directory.
-# The Jinja template is in the './templates' directory.
-# The script that combines them is `process_template.py`.
-# If you want to generate different random data, edit the file in the `./data_generator` directory and run it to output a new data file.
+* The raw data is in a tab-delimited file in the `./data` directory.
+* The Jinja template is in the `./templates` directory.
+* The script that combines them is `process_template.py`.
+* If you want to generate different random data, edit the file in the `./data_generator` directory and run it to output a new data file.
 
 ## Info
 
