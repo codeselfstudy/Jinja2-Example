@@ -8,16 +8,19 @@ from random import randint, uniform
 OUTFILE = './data/table_data.txt'
 COLUMN_DELIMITER = '\t'  # TAB-separated
 ROW_DELIMITER = '\n'  # Newline
+HEADERS = ['Name', 'Species', 'Power', 'Height', 'Weight', 'Age']
+SPECIES = ['Kobold', 'Beholder', 'Human', 'Elf', 'Goblin', 'Dragon', 'Giant']
+POWERS = ['Fireball', 'None', 'Cure_critical_wounds', 'Lightning_bolt', 'Magic_missile', 'Floating_disk', 'Dimension_door']
 
 fake = Faker()
 
 
 def pick_a_random(thing):
     """Returns a random something."""
-    if thing == 'team':
-        choices = ['ABC', 'XYZ', 'ZZZ', 'WWW', 'YYY']
-    elif thing == 'position':
-        choices = ['Starting_Pitcher', 'Third_Baseman', 'Shortstop', 'Catcher', 'Outfielder']
+    if thing == 'species':
+        choices = SPECIES
+    elif thing == 'power':
+        choices = POWERS
     else:
         return 'Zork'
 
@@ -28,13 +31,13 @@ def pick_a_random(thing):
 def generate_row():
     """Returns a tab-separated, single row of data as a string."""
     name = '_'.join([fake.first_name(), fake.last_name()])
-    team = pick_a_random('team')
-    position = pick_a_random('position')
-    height_inches = str(randint(40, 120))
-    weight = str(randint(50, 400))
-    age = str(round(uniform(10.0, 100.0), 2))  # A float
+    species = pick_a_random('species')
+    power = pick_a_random('power')
+    height = str(randint(1, 1000))
+    weight = str(randint(1, 1000))
+    age = str(round(uniform(1.0, 1000.0), 2))  # A float
 
-    return COLUMN_DELIMITER.join([name, team, position, height_inches, weight, age])
+    return COLUMN_DELIMITER.join([name, species, power, height, weight, age])
 
 
 def generate_rows(num_rows):
@@ -42,7 +45,7 @@ def generate_rows(num_rows):
 
     Returns a string that is ready for saving.
     """
-    header = COLUMN_DELIMITER.join(['Name', 'Team', 'Position', 'Height', 'Weight', 'Age'])
+    header = COLUMN_DELIMITER.join(HEADERS)
     content = ''.join([generate_row() + ROW_DELIMITER for _ in range(num_rows)])
     return '{}{}{}'.format(header, ROW_DELIMITER, content)
 
